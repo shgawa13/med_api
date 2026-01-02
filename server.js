@@ -10,7 +10,12 @@ const app = express();
 const PORT = process.env.PORT;
 // Connect to database
 connectDB();
-app.options('*', cors());
+
+app.use(cors({
+  origin: '*',  // Allow all origins
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // here we will setup the routes
