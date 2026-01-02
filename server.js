@@ -1,5 +1,6 @@
 const express = require("express");
 const colors = require("colors");
+const cors = require("cors");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middleware/errorMiddleWare");
@@ -9,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT;
 // Connect to database
 connectDB();
+app.options('*', cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // here we will setup the routes
